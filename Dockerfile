@@ -1,5 +1,5 @@
 # Elastalert Docker image running on Alpine Linux.
-# Build image with: docker build -t nsvijay04b1/elastalert:latest .
+# Build image with: docker build -t nsvijay04b1/elastalert-docker-container:latest .
 
 FROM alpine
 
