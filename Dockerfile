@@ -73,9 +73,9 @@ RUN apk update && \
     unzip elastalert.zip && \
     rm elastalert.zip && \
     mv e* "${ELASTALERT_HOME}" && \
-    sed -i.back "s#elasticsearch#urllib3==1.21.1\nelasticsearch#g" ${ELASTALERT_HOME}/requirements.txt && \
-    sed -i.back "s#'elasticsearch',#'urllib3==1.21.1',\n\t'elasticsearch',#g" ${ELASTALERT_HOME}/setup.py && \
-    cat ${ELASTALERT_HOME}/requirements.txt  ${ELASTALERT_HOME}/setup.py
+    sed -i.back "s#elasticsearch#urllib3==1.21.1\nelasticsearch#g" "${ELASTALERT_HOME}"/requirements.txt && \
+    sed -i.back "s#'elasticsearch',#'urllib3==1.21.1',\n\t'elasticsearch',#g" "${ELASTALERT_HOME}"/setup.py && \
+    cat "${ELASTALERT_HOME}"/requirements.txt  "${ELASTALERT_HOME}"/setup.py
     
 #elasticsearch required urrlib1.21 , so, above sed commands is WA
 
@@ -108,11 +108,11 @@ RUN python setup.py install && \
     rm -rf /var/cache/apk/*
 
 # Copy the script used to launch the Elastalert when a container is started.
-COPY ./start-elastalert.sh ${SV_CONFIG_DIR}
+COPY ./start-elastalert.sh "${SV_CONFIG_DIR}"
 
-COPY ./severity_frequency.yaml ${RULES_DIRECTORY}/
+COPY ./severity_frequency.yaml "${RULES_DIRECTORY}"/
 # Make the start-script executable.
-RUN chmod +x ${SV_CONFIG_DIR}/start-elastalert.sh
+RUN chmod +x "${SV_CONFIG_DIR}"/start-elastalert.sh
 
 # Define mount points.
 VOLUME [ "${EA_CONFIG_DIR}", "${SV_CONFIG_DIR}","${RULES_DIRECTORY}", "${LOG_DIR}"]
