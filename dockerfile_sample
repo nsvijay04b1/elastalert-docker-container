@@ -15,7 +15,7 @@ ENV CONTAINER_TIMEZONE Europe/Stockholm
 ENV ELASTALERT_URL https://github.com/Yelp/elastalert/archive/master.zip
 
 # In case official link above does not work, use my copy taken on 11/12/2017.
-#ENV ELASTALERT_URL https://github.com/Yelp/elastalert/archive/master.zip
+#ENV ELASTALERT_URL https://github.com/nsvijay04b1/elastalert-docker-container/archive/master/master.zip
 
 # Directory holding configuration for Elastalert .
 ENV EA_CONFIG_DIR /etc/elastalert
