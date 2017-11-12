@@ -1,0 +1,75 @@
+# Alert when the rate of events exceeds a threshold
+
+# (Optional)
+# Elasticsearch host
+#es_host: "elasticsearch.dto373.k8s.cloudnative.corp.amdocs.com"
+es_host: "elasticsearch-020-elasticsearch-client"
+
+# (Optional)
+# Elasticsearch port
+es_port: 9200
+
+# (OptionaL) Connect with SSL to Elasticsearch
+#use_ssl: True
+
+# (Optional) basic-auth username and password for Elasticsearch
+#es_username: someusername
+#es_password: somepassword
+
+# (Required)
+# Rule name, must be unique
+name: ALERT  severity ERROR occured 20 times in 1 hours next alert in 10 mins
+
+# (Required)
+# Type of alert.
+# the frequency rule type alerts when num_events events occur with timeframe time
+type: frequency
+
+# (Required)
+# Index to search, wildcard supported
+index: movies
+
+# (Required, frequency specific)
+# Alert when this many documents matching the query occur within a timeframe
+num_events: 20
+
+# (Required, frequency specific)
+# num_events must occur within this amount of time to trigger an alert
+timeframe:
+  hours: 1
+
+# (Required)
+# A list of Elasticsearch filters used for find events
+# These filters are joined with AND and nested in a filtered query
+# For more info: http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html
+filter:
+- term:
+    severity.keyword: "ERROR"
+- term:
+    amdocs_product.keyword: "ABP"
+- term:
+    application_component.keyword: "ADJ"
+
+#query_key: "ABP"
+
+#- term:
+#    amdocs_product: "ABP"
+
+# (Required)
+# The alert is use when a match is found
+alert:
+- "email"
+
+# (required, email specific)
+# a list of email addresses to send alerts to
+email:
+- "vijayakumar@example.com"
+
+from_addr: "ELK-elastalert@example.com"
+smtp_host: "int.google.com"
+
+
+
+realert:
+  minutes: 10
+
