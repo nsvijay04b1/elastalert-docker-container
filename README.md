@@ -1,5 +1,9 @@
-# elastalert-docker-container
-elastalert in a docker container
+# elastalert-docker-container and it's integration with kibana gui plugin.
+
+
+
+
+
 
 docker pull command:-  ```docker pull nsvijay04b1/elastalert-docker-container```
 
@@ -40,7 +44,49 @@ If you want to use offical image as is without customization, please check  http
 
 For detailed documentation of the elastalert application, please visit  https://elastalert.readthedocs.org 
 
-To integrate elastalert(backend) application to a front-end plugin on top of kibana, please check ![this]
+
+
+To integrate elastalert(backend) application to a front-end plugin on top of kibana, please follow below steps.
+
+- online method 
+```
+
+cd /usr/share/kibana;
+./bin/kibana-plugin install https://github.com/nsvijay04b1/elastalert-docker-container/blob/master/elastalert-kibana5.zip 
+echo "elastalert.serverHost: elastalert.host" >> /etc/kibana/kibana.yml #kibana config file
+restart kibana
+
+```
+
+- offline method
+
+if you have problems connecint from corporate network to  guthub or  https ceritficates, download the zip file manually transfer it to kibana /opt location and install plugin from the local file.
+
+ ```
+ cd /usr/share/kibana;
+ ./kibana-plugin install file:///opt/elastalert-kibana5.zip echo "elastalert.serverHost: elastalert.host" >> /etc/kibana/kibana.yml #kibana config file
+restart kibana
+
+ 
+ ```
+  
+
+official plugin on top of kibana at https://github.com/bitsensor/elastalert-kibana-plugin 
+
+
+
+more blogs on kibana elastalert plugin:-
+
+
+- https://bitsensor.io/blog/community-update-alerting-in-kibana
+
+- https://bitsensor.io/blog/elastalert-kibana-plugin-centralized-logging-with-integrated-alerting
+
+- https://engineeringblog.yelp.com/2016/03/elastalert-part-two.html
+
+
+
+
 
 
 
