@@ -54,12 +54,12 @@ ENV ELASTICSEARCH_TLS_VERIFY True
 ENV ELASTALERT_INDEX elastalert_status
 
 #If you are behind a corporrate proxy , set below variables , else comment them.
-ENV FTP_PROXY "http://proxy.google.com:8888/"
-ENV ftp_proxy "http://proxy.google.com:8888/"
-ENV HTTPS_PROXY "http://proxy.google.com:8888/"
-ENV https_proxy "http://proxy.google.com:8888/"
-ENV no_proxy "localhost,127.0.0.1,.corp.google.com,.google.com,corp.google.com,google.com,localaddress,.localdomain.com,/var/run/docker.sock,.sock"
-ENV HTTP_PROXY "http://proxy.google.com:8888/"
+#ENV FTP_PROXY "http://proxy.google.com:8888/"
+#ENV ftp_proxy "http://proxy.google.com:8888/"
+#ENV HTTPS_PROXY "http://proxy.google.com:8888/"
+#ENV https_proxy "http://proxy.google.com:8888/"
+#ENV no_proxy "localhost,127.0.0.1,.corp.google.com,.google.com,corp.google.com,google.com,localaddress,.localdomain.com,/var/run/docker.sock,.sock"
+#ENV HTTP_PROXY "http://proxy.google.com:8888/"
 #### proxy settings finished
 
 WORKDIR /opt
